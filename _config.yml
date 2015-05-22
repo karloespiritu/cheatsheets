@@ -1,0 +1,26 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            Cheatsheets
+tagline:          Code cheatsheets collection
+description:      "\"The only difference between science and screwing around is writing it down\""
+url:              http://karloespiritu.com/cheatsheets/
+baseurl:          "/cheatsheets/"
+
+author:
+  name:           'Karlo Espiritu'
+  url:            https://twitter.com/karloespiritu
+
+paginate:         5
+
+# Custom vars
+version:          1.0.0
+
+github:
+  repo:           https://github.com/karloespiritu/cheatsheets
