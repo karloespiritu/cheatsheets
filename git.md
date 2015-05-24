@@ -6,7 +6,6 @@ permalink: /git/
 
 Here are some of the Git commands that I often use.
 
-
 ```bash
 git config --list
 ```
@@ -19,6 +18,15 @@ Add remote repo
 
 ```bash
 git remote add remote-name https://github.com/user/repo.git
+```
+
+Syncing a fork
+
+```bash
+//Fetch the branches and their respective commits from the upstream repository. Commits to master will be stored in a local branch, upstream/master
+git fetch upstream
+git checkout master
+git merge upstream/master
 ```
 
 ##Commits
