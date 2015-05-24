@@ -36,5 +36,5 @@ curl -vvv -u karlo@httpbin.org:mypass http://httpbin.org/basic-auth
 ## Download Files
 
 ```bash
-curl -O  https://raw.github.com/username/reponame/master/filename
+curl -LOk  https://raw.github.com/username/reponame/master/filename
 ```
