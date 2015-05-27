@@ -20,6 +20,12 @@ Add remote repo
 git remote add remote-name https://github.com/user/repo.git
 ```
 
+Check remote repository URL of current repo
+
+```bash
+git config --get remote.origin.url
+```
+
 Syncing a fork
 
 ```bash
