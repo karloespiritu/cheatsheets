@@ -15,7 +15,7 @@ permalink: /macosx/
 
 ## Spectacle Shortcuts
 
-Spectacle allows you to easily organize windows without using a mouse - http://spectacleapp.com.
+Spectacle allows you to easily organize windows without using a mouse - [http://spectacleapp.com](http://spectacleapp.com).
 
 * Move to center of screen - Cmd + Alt + C
 
