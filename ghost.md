@@ -12,6 +12,43 @@ $ npm start
 http://127.0.0.1:2368 & http://127.0.0.1:2368/ghost
 ```
 
+
+## Upgrading
+
++ Stop Ghost service
+
+  ```bash
+  sudo service ghost stop
+  ```
+
++ Backup the following files/folders:
+  * `content/images/`
+  * `content/themes/custom_themes`
+  * `content/themes/data/*.db`
+  * `config.js`
+
++ Download latest Ghost version:
+
+  ```bash
+  wget http://ghost.org/zip/ghost-latest.zip
+  ```
+
++ Delete and replace old Ghost directory with new Ghost files
+
+  ```bash
+  cd /var/www/Ghost
+  rm -rf *
+  # copy the backup files to Ghost directory
+  ```
+
+
++ Copy backup files in Step 2 to Ghost directory
++ Start Ghost
+
+  ```bash
+  sudo service ghost start
+  ```
+
 ### Theme Structure
 
 ```bash
