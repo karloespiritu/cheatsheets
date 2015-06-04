@@ -52,5 +52,20 @@ will render as:
 
 This is a sample `inline code`
 
+## Blockquote
 
+```bash
+> This is a blockquote.  It looks best if you hard wrap the text and
+> put a `>` before every line.
+>
+> This is another paragraph. Lorem ipsum dolor sit amet,
+> consectetur adipisicing elit. Laboriosam, distinctio.
+```
+This will output:
+
+> This is a blockquote.  It looks best if you hard wrap the text and
+> put a `>` before every line.
+>
+> This is another paragraph. Lorem ipsum dolor sit amet,
+> consectetur adipisicing elit. Laboriosam, distinctio.
 
