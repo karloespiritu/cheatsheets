@@ -30,6 +30,22 @@ var myChar : Character
 var myBool : Bool         // true or false
 ```
 
+## Range Operators
+
+`...` - closed range operator
+
+```swift
+//Examples
+0...100   35...66   0...someVar
+```
+
+`..<` - half-open range operator. This does not include the last number on the right
+
+```swift
+0..<100   35..<66   0..<someArray.count
+```
+
+
 ## String Interpolation
 Use `\()` for string interpolation
 
@@ -73,8 +89,46 @@ if (quantity < 10 && isAvailable) || quantity >= 10 { ... }
 ```
 
 ## Switch Statements
+* No implicit fall through from one case to another. Empty cases are not allowed.
+* Use ranges for multiple values, use the `...` operator
 
 ```switch
 let quantity = 5
-switch quantity
+
+switch quantity {
+  case 1:
+    println("Do this for case 1")
+  case 2:
+    println("Do this for case 2")
+  case 3...10:    //3 dots is the range operator
+    println("DO this for 3 to 10")
+  default:
+      break  //to explicitly end this otherwise empty case
+}
+```
+
+## Loops
+The preferred way is using `for-in` loop
+
+```swift
+var total = 0
+for index in 1...10 {     //for each-item in some-collection
+  total = total + index
+}
+println("The total is \(total")
+
+var name = "karlo"
+for eachChar in name {
+  println(eachChar)
+}
+
+// while loop
+while condition {}
+  //...
+}
+
+//Do loop
+do {
+    // ...
+} while condition  
 ```
