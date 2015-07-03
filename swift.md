@@ -337,28 +337,38 @@ sortedArray
 * Classes can be either a superclass(right) or subclass(left), i.e. `class AdminUser : User`. `:` character is read as `is of type`
 * Add `final` before a method name, variable, or class name to prevent override of a subclass
 * Unlike Objective-C, Swift classes do not inherit from a default universal base class
+* Class-level methods and properties are called type properties and type methods respectively; declared using `class` keyword at the beginning of property/method
 
 ```swift
 class User {
-    // properties
-    var name : String
-    var age : Int
+    // STORED properties
+    var firstName : String
+    var lastName : String
+    var score : Int
+
+    // COMPUTED properties, get & set blocks are optional and can be omitted
+    var fullName : String {
+            // return the computed propery
+            return firstName + " " + lastName
+    }
 
     // methods
     func description() -> String {
-        return("User \(name) has the age of \(age)")
+        return("User \(firstName) has the score of \(score)")
     }
 
     // default initializer, init is a reserved keyword
     init() {
-        name = "John Doe"
-        age = 20
+        firstName = "John"
+        lastName = "Doe"
+        score = 0
     }
 
     // custom initializer with parameters
-    init(name : String) {
-        self.name = name    // use self to refer to current instance of this class' name
-        self.age = 20
+    init(first : String, last : String) {
+        self.firstName = first    // use self to refer to current instance of this class' name
+        self.lastName = last
+        self.score = 20
     }
 
     deinit {
@@ -370,15 +380,365 @@ class User {
 
 }
 
-//instatntiate a new Player object
+// instatntiate a new Player object
 var firstUser = User()
 
-//use dot syntax
-firstUser.name = "Player 1"
-firstUser.age = 66
+// use dot syntax
+firstUser.firstName = "Player 1"
+firstUser.score = 66
 println(firstUser.description())
 
-var secondUser = User(name: "Ozzy")
-println(secondUser.description())
+var secondUser = User(first: "Ozzy", last: "Osbourne")
+println(secondUser.fullName)
+
+class EliteUser : User {
+    //additional properties
+    var userLevel : String
+
+    // override required when you subclass a superclass because an init() already exists in the superclass
+    override init() {
+        userLevel = "Elite"
+        super.init()  //this is required to also initialize the superclass variables
+    }
+
+    override func description() -> String {
+        let originalMessage = super.description()
+        return("\(originalMessage) and is a \(userLevel) user")
+    }
+
+    // additional methods
+    func calculateBonus() {
+        self.score += 1000
+        println("New score is \(self.score)")
+    }
+}
+
+var newPlayer = EliteUser()
+newPlayer.description()
+newPlayer.calculateBonus()
+```
+
+### Lazy properties
+* Using a lazy property, Swift won't bother initializing until someone attempts to access it
+
+```swift
+import UIKit
+
+class Gamer {
+    // properties
+    var name : String = "John Doe"
+    var score = 0
+    lazy var bonus = getDailyRandomNumber()
+
+    // methods
+    func description() -> String {
+        return("Player \(name) has a score of \(score)")
+    }
+
+}
+
+var anotherGamer = Gamer()
+println(anotherGamer.bonus)
+```
+
+### Property Observers
+* These are added to properties to monitor changes to state of objects and automatically run some code whenever a property value changes
+
+```swift
+class Gamer {
+    // properties
+    var name : String = "John Doe" {
+        // these two methods are automatically called when the poroperty name changes
+        willSet {
+            // called just before the property changes
+            //'newValue is an implict parameter
+            println("About to chnage name to \(newValue)")
+        }
+        didSet {
+            // called right after the property changes
+            // oldValue is an implicit parameter
+            println("Have changed name from \(oldValue)")
+        }
+    }
+    var score = 0
+    lazy var bonus = getDailyRandomNumber()
+
+    // methods
+    func description() -> String {
+        return("Player \(name) has a score of \(score)")
+    }
+
+}
+
+var anotherGamer = Gamer()
+anotherGamer.name = "Kerry King"
+```
+
+### Access Levels
+
+* `private` - only accessible within the same source code file
+* `internal` - This is the default, and means the class, method, or property is accessible across mutiple code files but must be compiled together into the same module.
+* `public` - accessible from any module that has imported your code
+
+## Structures
+
+* In Swift, structures and class are very similar to each other. In other languages, structures are just simple containers for a few pieces of data. They don't have methods.
+* Structures in Swift can have methods, properties, computed properties, property observers. They can also have initializers.
+* Int, Bool, String, Array, Dictionaries, Double, Float, etc. are all implemented as structures in Swift
+* Structures in Swift have member-wise initializers, where you can provide arguments for each property of the structure
+* Structs have some limitations:
+  - do not take part in inheritance
+  - cannot use deinitializers
+* Structures are still intended for straight-forward data structure tasks. In general, use structures when internal properties are all simple value types such as `String`, `Int`, `Bool`, and `Float`.
+* As a general rule, if you would implement a structured data as a class in other languages, do the same in Swift.
+
+### Structures Vs Classes
+
+* Structures are value types (pass by value).
+  - When assigned to another variable. or passed to a function, a structure's value is *copied*
+
+* Classes are reference types (pass by reference)
+  - When assigned to another variable, or passed to a function, a *reference to the original object* is passed
+
+```swift
+//Pass by value
+//function that changes an Int
+func changeValue(var number : Int) -> Int {
+    number += 1000
+    return number
+}
+var myNumber = 666
+
+//define an Int variable (value type)
+changeValue(myNumber)
+
+//original var is unchanged = 666
+myNumber
+```
+
+```swift
+// Pass by reference
+class SimpleClass {     //change class to struct will keep original value of 'value'
+  var value : Int = 99
+}
+
+// Simple function that chnages an object
+func changeObject(var object : SimpleClass) -> Int {
+  object.value += 1000
+  return object.value
+}
+// create a new instance (reference type)
+var myObject = SimpleClass()
+
+// pass the object into the function - Pass By Reference
+changeObject(myObject)
+
+// the original object has been changed.
+myObject.value
+```
+
+## Operators
+* Swift requires whitespace to be balanced around operators
+* Swift does not allow values to overflow, but if needed *overflow operators* are available:
+```
+&+ &- &* &/ &%
+```
+
+### Equality and Identity
+* With objects, can also check identity (the same object).
+
+```swift
+// Note: this will not work on structures, only on objects
+===    // identical to
+!==     // not identical to
+```
+
+```swift
+var dateA = NSDateComponents()
+dateA.year = 2015
+dateA.month = 01
+dateA.day = 01
+
+var dateB = NSDateComponents()
+dateB.year = 2015
+dateB.month = 01
+dateB.day = 01
+
+// check equality: ==
+if dateA == dateB {
+    println("Yes dateA and dateB are equal to each other")
+}
+
+// check Identity
+if dateA === dateB {
+    println("Yes dateA and dateB are equal to each other")
+} else {
+    println("They might be equal, but not identical")
+}
+```
+
+### Advanced Operators
+
+* Nil coalescing operator - `??`
+  - used to assigned values to a variable depending if it is a nil or has a value
+```swift
+var personalSite : String?
+let defaultSite = "http://example.com"
+
+var website = personalSite ?? defaultSite
+```
+
+* Remainder operator - `%`
+  - can also work with negative numbers and floats, unlike in other languages where only positive integers are allowed
+
+## Advanced Language Features
+
+### Type Casting & Casting
+
+* There are times when the data types you use needs to be treated as a different data type.
+* Use `?` and `!` to check and unwrap properties of a variable typecasted to a different object type
+
+```swift
+let myButton    = UIButton()
+let mySlider    = UISlider()
+let myTextField = UITextField()
+let myDatePicker = UIDatePicker()
+
+let controls = [myButton, mySlider, myTextField, myDatePicker]
+
+for item in controls {
+    //option 1: check type with "is"
+//    if item is UIDatePicker {
+//        println("We have a UIDatePicker")
+//        // downcast with "as"
+//        let picker = item as UIDatePicker
+//        picker.datePickerMode = UIDatePickerMode.CountDownTimer
+//    }
+    // option 2: try to downcast with as?
+//    let picker = item as? UIDatePicker
+//    //then check if works, and unwrap the original
+//    if picker != nil {
+//        // use ! to force unwrap it to get to its properties
+//        picker!.datePickerMode = UIDatePickerMode.CountDownTimer
+//    }
+    // option 3 - most succint way, combination of option 1 & 2
+    if let picker = item as? UIDatePicker {
+        picker.datePickerMode = UIDatePickerMode.CountDownTimer
+    }
+}
+```
+
+### AnyObject and Any
+
+* Use `AnyObject` and `Any` when dealing with non-specific data
+* Important reason for this types is when working with existing frameworks for Cocoa. It is very common for this frameworks' existing methods to get back an array. Objective-C does not have typed arrays. The default array in Objective-C is `NSArray` can hold any type of object at any position. In Swift, when you use existing frameworks, what you get returned is an array of any objects.
+* Objective-C `id` maps to Swift `AnyObject`
+* Use `is`, `as`, `as?` to check and downcast types into something more specific
+* As long as you have an import statement to frameworks such as `UIKit`, Swift `String`, which are structures and not objects, is bridged to Objective-C's `NSString` Object
+* Only tupes and closres are not allowed to be assigned as `AnyObject`
+
+```swift
+var someObject : AnyObject  // needs to be an object
+var something : Any         // means any object or any data type
+
+var arrayOfObjects : [AnyObject]    // array of any type of objects
+var arrayOfAnything : [Any]         // array of any type of objects or non-object types including tuples, closures
+```
+
+```swift
+import UIKit
+
+someObject = "This is a simple message"
+someObject = 666
+
+if someObject is String {
+    let wordsArray = someObject.componentsSeparatedByString(" ")
+}
+```
+
+### Protocols
+
+* A protocol in Swift is way to standardize some behaviour across classes without worrying about inheritance or any formal relationship
+* It is simply a list of methods that you want some class to perform and properties a class to have. It doesn't say how they're done. When writing protocols, there is no actual impementation code. It doesn't say what class does them. It has nothing to do with inheritance.
+* It is a formal list of that any class can volunteer to support
+* Pproperties are always decalred as `var`
+* A class can inherit from multiple protocols and declared as comma separated right after the `:` in the class declaration
+
+```swift
+protocol ExampleProtocol {
+    //method signatures
+    func simpleMethod() -> Bool
+    var simpleProperty : Int { get }
+}
+
+class MyClass : ExampleProtocol {
+    // provide anything else you need this class to do
+    func simpleMethod() -> Bool {
+        // do some work
+        return true
+    }
+
+    var simpleProperty : Int {
+        return 666
+    }
+}
+```
+### Adding functionality with Extensions
+
+* Add methods and properties to existing types
+* Doesn't require source code for the type
+* Can be added to classes, structures and enumerations
+* A lightweight way of adding useful methods to existing types when you don't have the source code
+
+```swift
+extension String {
+    func reverseWords() -> String {
+        let wordsArray = self.componentsSeparatedByString(" ")
+        let reversedArray = wordsArray.reverse()
+        var newString = ""
+        for eachWord in reversedArray {
+            newString += eachWord + " "
+        }
+    return newString
+    }
+}
+
+var message = "I want to reverse all the words in this string"
+
+message.reverseWords()
+```
+
+### Generics
+
+* A feature in Swift language that lets you get benefits of strong type safety and flexibility all the same time
+
+```swift
+import UIKit
+
+class SimpleClass {
+    var singleProperty : String = "A string"
+}
+
+let myNumbers = [666,113,34,45,12,456, 234]
+let myStrings = ["death","hell","grave"]
+let myObjects = [SimpleClass(), SimpleClass(), SimpleClass(), SimpleClass()]
+
+func displayArray<T>(theArray : [T]) -> T{
+    println("Printing the array:")
+    for eachItem in theArray {
+        print(eachItem)
+        print(" : ")
+    }
+    println()
+    let finalElement : T = theArray[theArray.count-1]
+    return finalElement
+}
+
+var finalInt = displayArray(myNumbers)
+++finalInt
+var finalString = displayArray(myStrings)
+finalString.uppercaseString
+displayArray(myStrings)
+displayArray(myNumbers)
 ```
 
