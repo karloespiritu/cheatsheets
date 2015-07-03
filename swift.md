@@ -92,7 +92,7 @@ if (quantity < 10 && isAvailable) || quantity >= 10 { ... }
 * No implicit fall through from one case to another. Empty cases are not allowed.
 * Use ranges for multiple values, use the `...` operator
 
-```switch
+```swift
 let quantity = 5
 
 switch quantity {
@@ -231,7 +231,6 @@ var myTuple = (str, num)
 var myOtherTuple = (str, num, 9876, "Evil One")
 
 // return a tuple from a function
-```swift
 func getNameAndNumber() -> (name: String, number: Int) {
    return("Lucy Fer", 666)
 }
@@ -310,8 +309,6 @@ func performSixTimes( myClosureParameter : ()->() ) {
 performSixTimes { ()->() in
     println("This is the simplest closure in the world.")
 }
-
-
 
 // A function that explicitly takes no parameters and returns nothing
 func myFunction ()->()  // alternative way of declaring a function that returns nothing
