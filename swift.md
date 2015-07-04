@@ -64,6 +64,7 @@ println("The amount is \(Double(quantity) * price)")
 ## Conditionals
 * Parentheses are not required around the condition.
 * Curly braces are required around each code block.
+
 ```swift
 if myVar < 666 {
   // do something
@@ -72,13 +73,16 @@ if myVar < 666 {
 }
 ```
 * Conditions must be true or false:
+
 ```swift
 var x = 0 // typed as Int
 if x {    //will not compile, as it is not a boolean.
   // doSomething()
 }
 ```
+
 * Multiple conditions
+
 ```swift
 // logical AND: &&
 if a > 50 && b < 80 { ... }
@@ -166,9 +170,9 @@ func myFunction(name : String = "John Doe") {
   println("Hello, \(name)")
 }
 // to call
-myFunction("Jane") //Errror - will not work
-myFunction()       //OK - uses default param value
-myFunction(name:"Lucy") //OK - provide named argument
+myFunction("Jane")      // Errror - will not work
+myFunction()            // OK - uses default param value
+myFunction(name:"Lucy") // OK - provide named argument
 ```
 
 ## Arrays
