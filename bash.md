@@ -25,7 +25,7 @@ echo "Scripts arguments separated in different variables: $1 $2..."
 
 # Reading a value from input:
 echo "What's your name?"
-read name     #no need to declare a new variable
+read name     # no need to declare a new variable
 echo Hello, $name!
 ```
 
@@ -132,13 +132,13 @@ foo "My name is" $name
 ## Finding files
 
 ```bash
-#find files that start with the word "text"
+# find files that start with the word "text"
 find -name "text"
 
-#find only directories
+# find only directories
 find /var/log -name "syslog" -type d
 
-#find only files
+# find only files
 find -type f
 ```
 
