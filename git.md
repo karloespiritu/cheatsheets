@@ -6,15 +6,21 @@ permalink: /git/
 
 Here are some of the Git commands that I often use.
 
+Display local repo config settings
 ```bash
 git config --list
 ```
-Change origin URL
 
+Show remote repository URL
+```bash
+git config --get remote.origin.url
+```
+
+Change origin URL
 ```bash
 git remote set-url origin http//github.com/repo.git
 ```
-Add remote repo
+Add remote repoÂ
 
 ```bash
 git remote add remote-name https://github.com/user/repo.git
@@ -117,4 +123,3 @@ Delete a remote branch
 ```bash
 git push origin :the_remote_branch
 ```
-
