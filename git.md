@@ -14,6 +14,10 @@ git config --list
 Show remote repository URL
 ```bash
 git config --get remote.origin.url
+
+# or
+
+git remote show origin
 ```
 
 Change origin URL
