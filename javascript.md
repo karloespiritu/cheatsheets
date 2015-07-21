@@ -17,6 +17,29 @@ permalink: /javascript/
   - RegExp
 * Symbol (new in ES6)
 
+## Arrays
+
+Arrays in JavaScript are ordered lists of values of any type
+
+```js
+var myArray = ["Lucy", 666, false]
+```
+
+### Array Methods
+
+* `a.toString()` - Returns a string with the toString() of each element separated by commas.
+* `a.toLocaleString()` - Returns a string with the `toLocaleString()` of each element separated by commas.
+* `a.concat(item1[, item2[, ...[, itemN]]])`
+* `a.join(sep)`
+* `a.pop()`
+* `a.push(item1, ..., itemN)`
+* `a.reverse()`
+* `a.shift()`
+* `a.slice(start, end)`
+* `a.sort([cmpfn])`
+* `a.splice(start, delcount[, item1[, ...[, itemN]]])`
+* `a.unshift([item])`
+
 ## Closure
 * If a function is defined inside another function, the inner function has access to all of the outer function's variables, even after the outer function has returned.
 
@@ -35,20 +58,32 @@ function printName(name){
     // access to the `greeting` variable when it is finally called.
 }
 ```
+## Objects
 
-## Array Methods
+```js
+var myObj = {
+  myFunc: function() {
+    return "Purple haze, all in my brain";
+  }
+};
+myObj.myFunc(); // = Purple haze, all in my brain
 
-* `a.toString()` - Returns a string with the toString() of each element separated by commas.
-* `a.toLocaleString()` - Returns a string with the `toLocaleString()` of each element separated by commas.
-* `a.concat(item1[, item2[, ...[, itemN]]])`
-* `a.join(sep)`
-* `a.pop()`
-* `a.push(item1, ..., itemN)`
-* `a.reverse()`
-* `a.shift()`
-* `a.slice(start, end)`
-* `a.sort([cmpfn])`
-* `a.splice(start, delcount[, item1[, ...[, itemN]]])`
-* `a.unshift([item])`
+// Functions can access the object properties where the are attached to by using  'this' keyword
+myObj = {
+  myString: "Lately things they don't seem the same",
+  myFunc: function(){
+    return this.myString;
+  }
+}
+myObj.myFunc(); // = Lately things they don't seem the same
 
-##
+// Specify a context for a function to execute in when we invoke it using `call` or `apply`.
+
+va otherFunc = function(x){
+  return this.myString + x;
+} //Excuse me while I kiss the sky
+otherFunc.call(myObj, "Actin' funny, but I don't know why"); // ""Purple haze, all in my brain"
+
+anotherFunc.apply(myObj, ["Excuse me while I kiss the sky"]);
+
+```
