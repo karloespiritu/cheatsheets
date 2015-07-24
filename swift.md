@@ -177,7 +177,7 @@ myFunction(name:"Lucy") // OK - provide named argument
 
 ## Arrays
 * Arrays are strongly **typed**
-* Array mutability depends on using `'var' or `let`1
+* Array mutability depends on using `var` or `let`
 
 ```swift
 let daysInMonth = [34,2,34,345,45,5]
@@ -216,7 +216,7 @@ countries["FR"] = nil
 countries.removeValueForKey("FR")
 
 // loop a dictionary
-for (key, value) in countries {           // a tuple
+for (key, value) in countries {          // a tuple
   println("\(key) is short for \(value)")
 }
 ```
@@ -742,4 +742,3 @@ finalString.uppercaseString
 displayArray(myStrings)
 displayArray(myNumbers)
 ```
-
