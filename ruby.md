@@ -92,6 +92,85 @@ d = {'t' => 1, 'f' => 0}
 symbol_to_int = {t: 1, f: 0}
 ```
 
+## Case
+
+```rb
+case my_var
+when 1..5
+  puts "Number is between 1 and 5"
+when 6
+  puts "Number is 6"
+when String
+  puts "myVar is a String"
+else
+  puts "This is the default message"
+end
+```
+
+## Ternary Operator
+
+```rb
+myNumber = 666
+
+puts (myNumber < 666) ? "Not evil enough:(" : "Hellyeah"
+```
+
+## Loops
+
+```rb
+i = 1
+
+# Loop until break
+loop do
+  i += 1
+  next unless (x % 3) == 0
+  puts i  
+  break if i >= 15
+end
+
+# while loop
+j = 1
+
+while j <= 10
+  j += 1
+  next unless (j % 3) == 0
+  puts j
+  break if j >= 15
+end
+
+k = 1
+begin
+  k += 1
+  next unless (k % 3) == 0
+  puts k
+  break if k >= 15
+end while k <= 15
+
+# until loop
+
+m = 1
+until m >= 10
+  m += 1
+  next unless (m % 3) == 0
+  puts m  
+end
+
+# for loop
+integers = [10, 11, 12, 13, 14, 15]
+for integer in integers
+  puts "#{number}"
+end
+
+songs = ["Stone the Crow", "Mourn", "Conjure", "Dog Tired"]
+songs.each do |song|
+  puts "Listening to #{song}"
+end
+
+(0..666).each do |x|
+  puts "# #{x}"
+end
+```
+
 ## Functions
 
 ```ruby
