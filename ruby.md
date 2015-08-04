@@ -3,6 +3,7 @@ layout: page
 title: Ruby
 permalink: /ruby/
 ---
+Ruby is a dynamic, interpreted, object-oriented language. Everything is an object and all of those objects can be overwritten.
 
 ##Strings
 
@@ -92,9 +93,30 @@ d = {'t' => 1, 'f' => 0}
 symbol_to_int = {t: 1, f: 0}
 ```
 
-## Case
+## Conditionals
 
 ```rb
+# if-else
+length = 30
+if (length >= 5) && (length <= 10)
+    puts "Length is too short"
+elsif (length >= 11) && (length <= 20)
+    puts "Length is average"
+else
+    puts "Length is just right"
+end
+
+# unless can be used as comparison operator
+unless length > 10
+  puts "too short"
+else
+  puts "just right"
+end
+
+# add conditions before output
+puts "Length is too short" if length < 10
+
+# case
 case my_var
 when 1..5
   puts "Number is between 1 and 5"
@@ -161,11 +183,13 @@ for integer in integers
   puts "#{number}"
 end
 
+# cycles through every item in songs temporarily storing them in song
 songs = ["Stone the Crow", "Mourn", "Conjure", "Dog Tired"]
 songs.each do |song|
   puts "Listening to #{song}"
 end
 
+# cycles through 0 to 666
 (0..666).each do |x|
   puts "# #{x}"
 end
