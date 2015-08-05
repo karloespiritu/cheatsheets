@@ -129,7 +129,7 @@ else
 end
 ```
 
-## Ternary Operator
+### Ternary Operator
 
 ```rb
 myNumber = 666
@@ -195,7 +195,9 @@ end
 end
 ```
 
-## Functions
+## Functions & Exceptions
+
+### Functions
 
 ```ruby
 # 'return' keyword is optional when returning values
@@ -240,6 +242,38 @@ users "lucy", "cthulhu", "damien"
 
 # => ["lucy", "cthulhu", "damien"]
 
+```
+
+### Exceptions
+
+Catch exceptions with 'begin' and 'rescue'
+
+```rb
+print "Enter an integer :"
+first_number = gets.to_i
+print "Enter another : "
+second_number = gets.to_i
+
+begin
+  answer = first_number / second_number
+rescue # or use ZeroDivisionError
+  puts "Can't divide by zero"
+  exit
+end
+
+puts "#{first_number} / #{second_number} = #{answer}"
+
+# You can throw your own excetions using 'raise'
+def check_depth(depth)
+  raise ArgumentError, "Enter a Positive Integer: " unless depth > 100
+end
+
+# catch error with 'rescue'
+begin
+   check_depth(99)
+rescue ArgumentError
+  puts "Depth is too low, enter a number > 100"
+end
 ```
 
 ## Classes
