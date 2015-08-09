@@ -5,12 +5,25 @@ permalink: /ruby/
 ---
 Ruby is a dynamic, interpreted, object-oriented language. Everything is an object and all of those objects can be overwritten.
 
-##Strings
+## Strings
 
 ### Format String
 
 ```ruby
 "doom %s %d %f" % ["ipsum", 13, 3.7]
+```
+### Multi-line string
+
+```ruby
+# here-doc is  used when you want a multi-line string
+
+multiline_string = <<EOM
+This is a very long string
+that contains interpolation
+like #{600 + 66} \n\n
+EOM
+
+puts multiline_string
 ```
 
 ### Change case
