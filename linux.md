@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Useful Linux/UNIX Commands
+title: Linux/Unix
 permalink: /linux/
 ---
 
