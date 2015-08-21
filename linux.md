@@ -62,4 +62,7 @@ $ nestat -at
 #  Display name server information for domain by querying DNS.
 $ nslookup karloespiritu.com
 
+# Force kill a process by name
+ $ killall -9 process_name
+
 ```
