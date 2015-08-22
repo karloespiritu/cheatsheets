@@ -8,7 +8,7 @@ A list of useful commands for administering Linux/UNIX servers
 
 ```bash
 # Check disk usage
-$ free -h
+$ df -h
 
 # Display all files that are currently open
 $ lsof
