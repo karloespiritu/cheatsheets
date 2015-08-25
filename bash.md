@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bash Scripting
-permalink: bash/
+permalink: /bash/
 ---
 
 ## Basics
