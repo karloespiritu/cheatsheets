@@ -63,6 +63,19 @@ $ nestat -at
 $ nslookup karloespiritu.com
 
 # Force kill a process by name
- $ killall -9 process_name
+$ killall -9 process_name
 
+```
+
+## Sort
+
+```bash
+# Sort a file in ascending order
+$ sort names.md
+
+# Sort a file in descending order
+$ sort -r names.md
+
+# Sort password file by 4th field
+$ sort -t: -k 4n /etc/passwd | more
 ```
