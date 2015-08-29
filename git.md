@@ -45,7 +45,7 @@ git checkout master
 git merge upstream/master
 ```
 
-##Commits
+## Commits
 
 Unstage a file for commit
 
@@ -100,7 +100,7 @@ git stash apply
 ```
 
 
-##Manage Branches
+## Manage Branches
 
 Reset local repo to match remote repo
 
