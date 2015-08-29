@@ -80,8 +80,6 @@ $ pstree
 $ whereis nginx
 ```
 
-
-
 ## File Management
 
 ```bash
@@ -119,8 +117,12 @@ $ find / -type f -size +10M -exec ls -lh {} \; | awk '{ print $NF ": " $5 }'
 # Compress files & folders
 $ tar czvf archive.tgz ~/myfolder
 
+# Compress files and exclude specific directory
+$ tar czvf target.tgz --exclude='dir1' --exclude='<dir2>' /path_of_dr/to/backup
+
 # Extract tar archive
 $ tar xzvf archive.tgz
+
 
 # SORTING
 # Sort a file in ascending order
