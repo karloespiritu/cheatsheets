@@ -123,6 +123,9 @@ $ tar czvf target.tgz --exclude='dir1' --exclude='<dir2>' /path_of_dr/to/backup
 # Extract tar archive
 $ tar xzvf archive.tgz
 
+# CUT
+# Display only specific column using a delimiter
+$ cut -f 1 -d ':' /etc/passwd
 
 # SORTING
 # Sort a file in ascending order
