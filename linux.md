@@ -126,6 +126,8 @@ $ tar xzvf archive.tgz
 # CUT
 # Display only specific column using a delimiter
 $ cut -f 1 -d ':' /etc/passwd
+# Display specific fields with a specified delimeter and output using custom output delimeter
+$ cut -f 1,3 -d ':' --output-delimiter=' ' /etc/passwd
 
 # SORTING
 # Sort a file in ascending order
