@@ -97,6 +97,16 @@ utc = Time.now.utc  # 2015-05-19 17:01:46 UTC
 epoch = Time.now.to_i
 ```
 
+## Arrays
+
+```ruby
+a = [ "a", "b", "c", "d" ]
+a.rotate!        #=> ["b", "c", "d", "a"]
+a                #=> ["b", "c", "d", "a"]
+a.rotate!(2)     #=> ["d", "a", "b", "c"]
+a.rotate!(-3)    #=> ["a", "b", "c", "d"]
+```
+
 ## Dictionaries
 
 ```ruby
