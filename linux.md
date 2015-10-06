@@ -113,6 +113,9 @@ $ ls -ltr
 # List all files that are > 20MB
 $ find / -type f -size +10M -exec ls -lh {} \; | awk '{ print $NF ": " $5 }'
 
+# Find the biggest files (but not directories) in current directory
+$  find . -type f -exec du -Sh {} + | sort -rh | head -n 15
+
 # COMPRESS
 # Compress files & folders
 $ tar czvf archive.tgz ~/myfolder
