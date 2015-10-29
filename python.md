@@ -80,6 +80,46 @@ t = datetime.datetime.now()
 epoch = int(t.strftime("%s"))
 ```
 
+## List
+
+```python
+# define a list
+my_list = [6, 5, 'x', 4, 'y']
+
+# access an item list
+my_list[0]  # returns 6
+
+# slicing
+my_list[1:3]  # returns [5, 'x']
+my_list[2:]   # returns ['x', 4, 'y']
+my_list[:2]   # returns [6, 5]
+my_list[2:-1] # returns 6
+
+# length
+len(my_list)  # returns 5
+
+# sort
+my_list.sort()  # [4, 5, 6, 'x', 'y']
+
+# add
+my_list.append(45)  # [4, 5, 6, 'x', 'y', 45]
+
+# return & remove
+my_list.pop()   # returns 45   [4, 5, 6, 'x', 'y']
+my_list.pop(1)  # returns 5    [4, 6, 'x', 'y']
+
+# insert
+my_list.insert(2, 'z')   # [4, 'z', 6, 'x', 'y']
+my_list.remove('x')      # [4, 'z', 6, 'y']
+del my_list[0]           # ['z', 6, 'y']
+
+# concatenation
+my_list + [0]     # returns ['z',6,'y',0]    ['z',6,'y']
+
+# finding
+9 in my_list      # returns True             ['z',6,'y']
+```
+
 ## Dictionaries
 
 ```python
