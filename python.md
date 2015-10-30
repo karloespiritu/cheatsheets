@@ -123,7 +123,20 @@ my_list + [0]     # returns ['z',6,'y',0]    ['z',6,'y']
 ## Dictionaries
 
 ```python
-d = {'t': 1, 'f': 0}
+empty_dict = {}
+
+# Here is a prefilled dictionary
+filled_dict = {"one": 1, "two": 2, "three": 3}
+
+# Look up values with []
+filled_dict["one"]   # => 1
+
+# Get all keys as a list with "keys()"
+filled_dict.keys()   # => ["three", "two", "one"]
+# Note - Dictionary key ordering is not guaranteed.
+
+# Get all values as a list with "values()"
+filled_dict.values()   # => [3, 2, 1]
 ```
 
 ## Classes
