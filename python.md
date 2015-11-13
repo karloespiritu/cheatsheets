@@ -139,6 +139,23 @@ filled_dict.keys()   # => ["three", "two", "one"]
 filled_dict.values()   # => [3, 2, 1]
 ```
 
+## Control Flow
+
+```python
+# declare a variable
+my_var = 6
+
+# if statement. Indentation is significant in python!
+# prints "my_var is smaller than 10"
+if my_var > 10:
+    print "my_var is totally bigger than 10."
+elif my_var < 10:  # elif clause is optional.
+    print "my_var is smaller than 10."
+else:           # This is optional too.
+    print "my_var is indeed 10."
+
+```
+
 ## Classes
 
 ```python
