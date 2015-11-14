@@ -80,6 +80,19 @@ t = datetime.datetime.now()
 epoch = int(t.strftime("%s"))
 ```
 
+## Tuples
+Tuples consist of a number of values separated by commas. They are useful for ordered pairs and returning several values from a function.
+
+```python
+empty_tuple = ()
+single_item_tuple = ("corpse",)   # take not of the comma!
+my_tuple1 = 33, 666, 'a'
+my_tuple2 = (22, 444, 'b')
+
+# accessing a tuple
+my_tuple1[1]  # returns 33
+```
+
 ## List
 
 ```python
