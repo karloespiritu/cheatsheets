@@ -169,6 +169,26 @@ else:           # This is optional too.
 
 ```
 
+## Loops
+
+# iterate over a list using 'for'
+```python
+for song in ["Angel of Death", "Necrophobic", "Altar of Sacrifice"]:
+    # You can use {0} to interpolate formatted strings.
+    print "{0} is a track in Reign In Blood".format(song)
+
+for i in range(5):
+    print i
+```
+
+# iterate using 'while'
+```python
+x = 0
+while x < 5:
+    print x
+    x += 1  # shorthand for x = x + 1
+```
+
 ## Classes
 
 ```python
