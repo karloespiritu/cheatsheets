@@ -166,13 +166,12 @@ elif my_var < 10:  # elif clause is optional.
     print "my_var is smaller than 10."
 else:           # This is optional too.
     print "my_var is indeed 10."
-
 ```
 
 ## Loops
 
-# iterate over a list using 'for'
 ```python
+# iterate over a list using 'for'
 for song in ["Angel of Death", "Necrophobic", "Altar of Sacrifice"]:
     # You can use {0} to interpolate formatted strings.
     print "{0} is a track in Reign In Blood".format(song)
@@ -181,12 +180,41 @@ for i in range(5):
     print i
 ```
 
-# iterate using 'while'
 ```python
+# iterate using 'while'
 x = 0
 while x < 5:
     print x
     x += 1  # shorthand for x = x + 1
+```
+
+## Exceptions
+
+Works on Python 2.6 and up:
+
+```python
+try:
+    # Use "raise" to raise an error
+    raise IndexError("This is an index error")
+except IndexError as e:
+    # Pass is just a no-op. Usually you would do recovery here.
+    pass
+except (TypeError, NameError):
+    # Multiple exceptions can be handled together, if required.
+    pass
+else:   
+    # Optional clause to the try/except block. Must follow all except blocks
+    # Runs only if the code in try raises no exceptions
+    print "All good!"
+finally:
+    #  Execute under all circumstances
+    print "We can clean up resources here"
+
+
+# Instead of try/finally to cleanup resources you can use a with statement
+with open("file.txt") as f:
+    for line in f:
+        print line
 ```
 
 ## Classes
