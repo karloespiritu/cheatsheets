@@ -7,24 +7,26 @@ permalink: /git/
 Here are some of the Git commands that I often use.
 
 Display local repo config settings
+
 ```bash
 git config --list
 ```
 
 Show remote repository URL
+
 ```bash
 git config --get remote.origin.url
-
 # or
-
 git remote show origin
 ```
 
 Change origin URL
+
 ```bash
 git remote set-url origin http//github.com/repo.git
 ```
-Add remote repoÂ
+
+Add remote repo
 
 ```bash
 git remote add remote-name https://github.com/user/repo.git
@@ -43,6 +45,20 @@ Syncing a fork
 git fetch upstream
 git checkout master
 git merge upstream/master
+```
+
+## Refactor filenames
+
+```bash
+// Deletes file from working directory and stages the deletion
+git rm <filename>
+
+// Removes file from version control but preserves file locally
+git rm -cached <filename>
+
+// Changes file name and prepares it for commit
+git mv <filename-orig> <filename-renamed>
+
 ```
 
 ## Commits
@@ -87,11 +103,16 @@ git add ....                  (4)
 git commit -c ORIG_HEAD       (5)
 ```
 
+## Stash
+
 Temporarily stash changes, apply later
 
 ```bash
 //Stash current changes
 git stash
+
+//List all stashed changesets
+git stash list
 
 #Do some new changes
 
