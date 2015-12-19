@@ -22,6 +22,12 @@ Uninstall using Homebrew
 $ brew uninstall --force mongodb
 ```
 
+Start & Stop using Homebrew
+
+```bash
+$ brew services start mongodb
+$ brew services stop mongodb
+```
 
 Connect to mongo
 
