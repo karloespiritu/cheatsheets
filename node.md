@@ -4,6 +4,15 @@ title: Node
 permalink: /node/
 ---
 
+## Manage Packages
+
+```bash
+$ npm outdated -g --depth=0  # To find out which packages need to be updated
+$ npm install -g <package>   # To update a specific global package
+$ npm update -g              # To update all global packages
+$ npm uninstall -g <package> # To uninstall a global package
+```
+
 ## Global Objects
 
 {% highlight js %}
