@@ -609,53 +609,61 @@ s.lastNameCaps = lastNameCaps;
 s.lastNameCaps();
 ```
 
+### Inner functions
 
-
-
-## Closure
-* If a function is defined inside another function, the inner function has access to all of the outer function's variables, even after the outer function has returned.
+- JavaScript function declarations are allowed inside other functions. We've seen this once before, with an earlier `makePerson()` function. An important detail of nested functions in JavaScript is that they can access variables in their parent function's scope:
 
 ```js
-function printName(name){
-    var greeting = "Hello, " + name + "!";
-    // Inner functions are put in the local scope by default, as if they were
-    // declared with `var`.
-    function inner(){
-        console.log(greeting);
-    }
-    setTimeout(inner, 2000);
-    // setTimeout is asynchronous, so the printName function will
-    // exit immediately, and setTimeout will call inner afterwards. However,
-    // because inner is "closed over" printName, inner still has
-    // access to the `greeting` variable when it is finally called.
+function betterExampleNeeded() {
+  var a = 1;
+  function oneMoreThanA() {
+    return a + 1;
+  }
+  return oneMoreThanA();
 }
 ```
-## Objects
+
+- This provides a great deal of utility in writing more maintainable code. If a function relies on one or two other functions that are not useful to any other part of your code, you can nest those utility functions inside the function that will be called from elsewhere. This keeps the number of functions that are in the global scope down, which is always a good thing.
+
+
+## Closures
+
+-  The most powerful abstractions that JavaScript has to offer, but potentially confusing
 
 ```js
-var myObj = {
-  myFunc: function() {
-    return "Purple haze, all in my brain";
-  }
-};
-myObj.myFunc(); // = Purple haze, all in my brain
-
-// Functions can access the object properties where the are attached to by using  'this' keyword
-myObj = {
-  myString: "Lately things they don't seem the same",
-  myFunc: function(){
-    return this.myString;
-  }
+function makeAdder(a) {
+  return function(b) {
+    return a + b;
+  };
 }
-myObj.myFunc(); // = Lately things they don't seem the same
-
-// Specify a context for a function to execute in when we invoke it using `call` or `apply`.
-
-va otherFunc = function(x){
-  return this.myString + x;
-} //Excuse me while I kiss the sky
-otherFunc.call(myObj, "Actin' funny, but I don't know why"); // ""Purple haze, all in my brain"
-
-anotherFunc.apply(myObj, ["Excuse me while I kiss the sky"]);
-
+var x = makeAdder(5);
+var y = makeAdder(20);
+x(6); // 11
+y(7); // 27
 ```
+
+- The `makeAdder` function creates a new 'adder' functions, which when called with one argument adds it to the argument that they were created with.
+
+- A function defined inside another function has access to the outer function's variables. The only difference here is that the outer function has returned, and hence common sense would seem to dictate that its local variables no longer exist. But they do still exist — otherwise the adder functions would be unable to work. What's more, there are two different "copies" of makeAdder's local variables — one in which a is 5 and one in which a is 20.
+
+- Here's what's actually happening. Whenever JavaScript executes a function, a 'scope' object is created to hold the local variables created within that function. It is initialised with any variables passed in as function parameters.
+
+- This is similar to the global object that all global variables and functions live in, but with a couple of important differences:
+
+  - firstly, a brand new scope object is created every time a function starts executing;
+  - secondly, unlike the global object (which is accessible as `this` and in browsers as window) these scope objects cannot be directly accessed from your JavaScript code. There is no mechanism for iterating over the properties of the current scope object, for example.
+
+- When `makeAdder` is called, a scope object is created with one property: a, which is the argument passed to the `makeAdder` function.
+
+- `makeAdder` then returns a newly created function. Normally JavaScript's garbage collector would clean up the scope object created for `makeAdder` at this point, but the returned function maintains a reference back to that scope object. As a result, the scope object will not be garbage collected until there are no more references to the function object that `makeAdder` returned.
+
+- Scope objects form a chain called the scope chain, similar to the prototype chain used by JavaScript's object system.
+
+- A **closure** is the combination of a function and the scope object in which it was created.
+
+- Closures let you save state — as such, they can often be used in place of objects. You can find [several excellent introductions to closures](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work).
+
+## Reference
+
+[A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
+
