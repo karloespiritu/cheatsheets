@@ -4,6 +4,35 @@ title: React
 permalink: /react/
 ---
 
+## React on ES6+
+
+- [class definition syntax](https://babeljs.io/docs/learn-es2015/#classes)
+- Class methods are declared without a colon, `function` keyword, and comma
+- All of the lifecycle methods but one can be defined as you would expect when using the new `class` syntax. The `constructor` method now assumes role of `componentWillMount`
+
+```js
+class Photo extends React.Component {
+  render() {
+    return <img alt={this.props.caption} src={this.props.src} />;
+  }
+}
+```
+
+```js
+// The ES5 way
+var Photo = React.createClass({
+  handleDoubleTap: function(e) { … },
+  render: function() { … },
+});
+
+// ES6 way
+class Photo extends React.Component {
+  handleDoubleTap(e) { … }
+  render() { … }
+}
+
+```
+
 ## Basic Class
 
 ```html
