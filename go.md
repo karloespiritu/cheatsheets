@@ -19,6 +19,35 @@ permalink: /go/
 * Pointers, but not pointer arithmetic
 * Built-in concurrency primitives: Goroutines and Channels
 
+## Quick Start
+
+1. Create Directories
+
+    ```bash
+    mkdir $HOME/Go
+    mkdir -p $HOME/Go/src/github.com/username
+    ```
+2. Setup Paths
+
+    ```bash
+    //  add to ~/.bash_profile
+    export GOPATH="$HOME/Go"
+    export PATH="/usr/local/bin:$PATH:$GOPATH/bin"
+    ```
+
+3. Install Go
+
+    ```bash
+    brew install go
+    ```
+
+4. "go get" the basics
+
+    ```
+    go get golang.org/x/tools/cmd/godoc
+    go get golang.org/x/tools/cmd/vet
+    ```
+
 ## Basic Syntax
 
 File `hello.go`:
@@ -26,6 +55,7 @@ File `hello.go`:
 ```go
 package main
 
+// fmt - short for format
 import "fmt"
 
 func main() {
