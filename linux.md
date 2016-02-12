@@ -110,6 +110,9 @@ $ ln -s target.txt symlink.txt
 # List files ordered by modified time
 $ ls -ltr
 
+# To get the summary of a grand total disk usage size of a directory
+$ du -sh /var/www/mysite
+
 # List all files that are > 20MB
 $ find / -type f -size +10M -exec ls -lh {} \; | awk '{ print $NF ": " $5 }'
 
