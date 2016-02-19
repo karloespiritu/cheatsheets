@@ -54,7 +54,7 @@ git merge upstream/master
 git rm <filename>
 
 // Removes file from version control but preserves file locally
-git rm -cached <filename>
+git rm --cached <filename>
 
 // Changes file name and prepares it for commit
 git mv <filename-orig> <filename-renamed>
