@@ -15,12 +15,13 @@ permalink: /angular/
 Create a module that depends on module1 and module2
 
 ```js
-angular.module("app", ["module1, module2"])
+angular.module('app', ['module1', 'module2']);
 ```
-Get refereof a module named app
+
+Get reference of a module named app
 
 ```js
-var app = angular.module("app")
+var app = angular.module('app')
 ```
 
 ## Filters
