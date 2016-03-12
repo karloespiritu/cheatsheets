@@ -87,4 +87,27 @@ permalink: /rails/
     `-- stylesheets
 ```
 
+## Basic Commands
+
+Generate a controller
+
+```bash
+rails generate controller controller_name action1 action2
+```
+
+Generate a mailer. Mailers are similar to controllers and have their own view
+files in `app/views/mailer_name/`. More info [here](http://guides.rubyonrails.org/v2.3.8/action_mailer_basics.html)
+
+```bash
+rails generate mailer MailerName
+```
+
+```bash
+rails console
+rails server
+bin/rails
+rails generate
+rails dbconsole
+rails new app_name
+```
 
