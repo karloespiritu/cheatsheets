@@ -111,3 +111,19 @@ rails dbconsole
 rails new app_name
 ```
 
+## Rake
+
+Rake is Ruby Make, a standalone Ruby utility that replaces the Unix utility 'make', and uses a `Rakefile` and `.rake `files to build up a list of tasks. In Rails, Rake is used for common administration tasks, especially sophisticated ones that build off of each other.
+
+```bash
+rake assets:precompile
+rake assets:clean
+
+rake db:migrate
+rake db:create
+
+rake doc:app
+rake doc:guides
+rake doc:rails
+
+```
