@@ -28,7 +28,7 @@ permalink: /es6/
 - [reflect api](#reflect-api)
 - [tail calls](#tail-calls)
 
-## Arrows
+### Arrows
 
 Arrows are a function shorthand using the => syntax.
 
@@ -54,7 +54,7 @@ var bob = {
 }
 ```
 
-## Enhanced Object Literals
+### Enhanced Object Literals
 
 Object literals are extended to support setting the prototype at construction,
 shorthand for foo: foo assignments, defining methods and making super calls.
@@ -75,14 +75,14 @@ var obj = {
 };
 ```
 
-## Template Strings
+### Template Strings
 
 ```js
 let name = "Lemmy", time = "today";
 `Hello ${name}, how are you ${time}?`
 ```
 
-## Let + Const
+### Let + Const
 
 Block-scoped binding constructs. `let` is the new var. `const` is single-assignment. Static restrictions prevent use before assignment.
 
@@ -102,3 +102,79 @@ function f() {
 }
 ```
 
+### Iterators + For..Of
+
+Generalize `for..in` to custom iterator-based iteration with `for..of`.
+
+```js
+let fibonacci = {
+  [Symbol.iterator]() {
+    let pre = 0, cur = 1;
+    return {
+      next() {
+        [pre, cur] = [cur, pre + cur];
+        return { done: false, value: cur }
+      }
+    }
+  }
+}
+
+for (var n of fibonacci) {
+  // truncate the sequence at 1000
+  if (n > 1000)
+    break;
+  console.log(n);
+}
+```
+
+### Generators
+
+Generators simplify iterator-authoring using `function*` and `yield`. A function declared as function* returns a Generator instance. Generators are subtypes of iterators which include additional `next` and `throw`. These enable values to flow back into the generator, so `yield` is an expression form which returns a value (or throws).
+
+```js
+var fibonacci = {
+  [Symbol.iterator]: function*() {
+    var pre = 0, cur = 1;
+    for (;;) {
+      var temp = pre;
+      pre = cur;
+      cur += temp;
+      yield cur;
+    }
+  }
+}
+
+for (var n of fibonacci) {
+  // truncate the sequence at 1000
+  if (n > 1000)
+    break;
+  console.log(n);
+}
+```
+
+### Unicode
+
+Non-breaking additions to support full Unicode, including new Unicode literal form in strings and new RegExp `u`mode to handle code points, as well as new APIs to process strings at the 21bit code points level. These additions support building global apps in JavaScript.
+
+```js
+// same as ES5.1
+"𠮷".length == 2
+
+// new RegExp behaviour, opt-in ‘u’
+"𠮷".match(/./u)[0].length == 2
+
+// new form
+"\u{20BB7}"=="𠮷"=="\uD842\uDFB7"
+
+// new String ops
+"𠮷".codePointAt(0) == 0x20BB7
+
+// for-of iterates code points
+for(var c of "𠮷") {
+  console.log(c);
+}
+```
+
+Reference
+
+[Overview of ECMAScript 6 features](https://github.com/lukehoban/es6features)
