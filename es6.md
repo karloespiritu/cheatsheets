@@ -175,6 +175,77 @@ for(var c of "𠮷") {
 }
 ```
 
+### Modules
+
+Prior to ES6, we used libraries such as [Browserify](http://browserify.org/) to create modules on the client-side, and require in Node.js. With ES6, we can now directly use modules of all types (AMD and CommonJS).
+
+#### Exporting in CommonJS
+
+```js
+module.exports = 1;
+module.exports = { foo: 'bar' };
+module.exports = ['foo', 'bar'];
+module.exports = function bar () {};
+```
+
+#### Exporting in ES6
+
+Named exports:
+
+```js
+export let name = 'Lemmy';
+export let age  = 70;​​
+```
+
+Exporting a list of objects:
+
+```js
+function sumTwo(a, b) {
+    return a + b;
+}
+
+function sumThree(a, b, c) {
+    return a + b + c;
+}
+
+export { sumTwo, sumThree };
+```
+
+Export functions, objects and values (etc.) simply by using the export keyword:
+
+```js
+export function sumTwo(a, b) {
+    return a + b;
+}
+
+export function sumThree(a, b, c) {
+    return a + b + c;
+}
+```
+
+Export default bindings:
+
+```js
+function sumTwo(a, b) {
+    return a + b;
+}
+
+function sumThree(a, b, c) {
+    return a + b + c;
+}
+
+let api = {
+    sumTwo,
+    sumThree
+};
+
+export default api;
+
+/* Which is the same as
+ * export { api as default };
+ */
+```
+
 Reference
 
 [Overview of ECMAScript 6 features](https://github.com/lukehoban/es6features)
