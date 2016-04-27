@@ -56,6 +56,8 @@ $ ifconfig eth0 broadcast 192.168.1.255
 $ nestat -a
 # List All TCP Ports
 $ nestat -at
+# List All Used TCP Ports
+$ netstat -ntlp | grep LISTEN
 
 # Display name server information for domain by querying DNS.
 $ nslookup karloespiritu.com
