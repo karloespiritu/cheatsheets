@@ -6,6 +6,8 @@ permalink: /git/
 
 Here are some of the Git commands that I often use.
 
+## Basic
+
 Display local repo config settings
 
 ```bash
@@ -72,7 +74,7 @@ git reset <file>
 Combining commits
 
 ```bash
-//Interactive rebasing of last 4 commits
+//Interactive rebasing of last 3 commits
 git rebase -i HEAD~3
 
 //Tells Git to combine all 3 commits into the 1st commit
@@ -108,15 +110,15 @@ git commit -c ORIG_HEAD       (5)
 Temporarily stash changes, apply later
 
 ```bash
-//Stash current changes
+// Stash current changes
 git stash
 
 //List all stashed changesets
 git stash list
 
-#Do some new changes
+# Do some new changes
 
-//Apply stashed changes
+// Apply stashed changes
 git stash apply
 ```
 
@@ -146,5 +148,5 @@ git branch -d <branch-name>
 Delete a remote branch
 
 ```bash
-git push origin :the_remote_branch
+git push origin :remote_branch
 ```
