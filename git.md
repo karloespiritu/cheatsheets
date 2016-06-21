@@ -150,3 +150,66 @@ Delete a remote branch
 ```bash
 git push origin :remote_branch
 ```
+
+## Merging a finished feature branch
+
+The `--no-ff` flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature.
+
+```bash
+git co develop
+git nerge --no-ff myfeature
+git branch -d myfeature
+git push origin develop
+```
+
+## Create a release branch
+
+```bash
+git checkout -b release-1.2 develop
+./bump-version.sh 1.2
+git commit -a -m "Bumped version number to 1.2"
+```
+
+## Finishing a release branch
+
+```bash
+git checkout master
+git merge --no-ff release-1.2
+git tag -a 1.2
+```
+
+To keep the changes made in the release branch, we need to merge those back into develop, though.
+
+```bash
+git checkout develop
+git merge --no-ff release-1.2
+// delete release branch, no longer needed
+git branch -d release-1.2
+```
+
+## Creating a hotfix branch
+
+```bash
+git checkout -b hotfix-1.2.1 master
+./bump-version.sh 1.2.1
+git commit -a -m "Bumped version number to 1.2.1"
+```
+
+Don’t forget to bump the version number after branching off.
+
+```bash
+git commit -m "Fixed severe production problem"
+```
+
+## Finishing a hotfix branch
+
+```bash
+git checkout master
+git merge --no-ff hotfix-1.2.1
+git tag -a 1.2.1
+
+// include fix into develop
+git checkout develop
+git merge --no-ff hotfix-1.2.1.2
+git branch -d hotfix-1.2.1
+```
