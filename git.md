@@ -157,7 +157,7 @@ The `--no-ff` flag causes the merge to always create a new commit object, even i
 
 ```bash
 git co develop
-git nerge --no-ff myfeature
+git merge --no-ff myfeature
 git branch -d myfeature
 git push origin develop
 ```
