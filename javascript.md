@@ -11,9 +11,47 @@ permalink: /javascript/
 
 ## Data Types
 
-* [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
-* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-* [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+### Primitive Types
+
+All primitive types have literal representations of their values.
+
+* [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) - `true` or `false`
+* [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) - Any integer or floating-point numeric value
+* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) - A character or sequence of characters delimited
+by either single or double quotes (JavaScript has no separate character type)
+* [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) - A primitive type that has only one value, null
+* [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) - A primitive type that has only one value, undefined (undefined is the value assigned to a variable that is not initialized)
+
+```js
+// use typeof operator to identify primitive types
+
+console.log(typeof "Karlo"); // "string"
+console.log(typeof 10); // "number"
+console.log(typeof 5.1); // "number"
+console.log(typeof true); // "boolean"
+console.log(typeof undefined); // "undefined"
+
+```
+
+#### Primitive  Methods
+
+```js
+var name = "Karlo";
+var lowercaseName = name.toLowerCase();  // convert to lowercase
+var firstLetter = name.charAt(0);  // get first character
+var middleOfName = name.substring(2, 5);  // get characters 2-4
+var count = 10;
+var fixedCount = count.toFixed(2);  // convert to "10.00"
+var hexCount = count.toString(16); // convert to "a"
+var flag = true;
+var stringFlag = flag.toString(); // convert to "true"
+
+```
+
+### Reference Types
+
+Reference values are instances of reference types and are synonymous with objects. Reference types do not store the object directly into the variable to which it is assigned, so the object variable doesn’t actually contain the object instance. Instead, it holds a pointer (or reference) to the location in memory where the object exists. This is the primary difference between objects and primitive values, as the primitive is stored directly in the variable.
+
 * [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 * [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
   - [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
@@ -21,8 +59,8 @@ permalink: /javascript/
   - [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
   - [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 * [Symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) (new in ES6)
-* [null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
-* [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+
+
 
 ## Numbers
 
@@ -291,6 +329,10 @@ for (var i = 0, item; item = a[i++];) {
 
 ## Functions
 
+- Functions are actually objects in JavaScript. The defining characteristic of a function, what distin-guishes it from any other object is the presence of an internal property named [[Call]].
+
+- Without parentheses right after a function name, a function can be accessed as an object.
+
 - Along with objects, functions are the core component in understanding JavaScript
 
 - A most basic function:
@@ -412,6 +454,8 @@ var charsInBody = (function counter(elm) {
 
 - Instead, JavaScript uses **functions as classes**. Let's consider a person object with first and last name fields. There are two ways in which the name might be displayed: as "first last" or as "last, first".
 
+- All objects inherit from `Object.prototype`. b=
+
 ```js
 function makePerson(first, last) {
   return {
@@ -451,6 +495,15 @@ s = makePerson("Lemmy", "Kilmister")
 s.fullName(); // "Lemmy Kilmister"
 s.fullNameReversed(); // "Kilmister, Lemmy"
 ```
+
+### `Object.prototype` methods
+
+* hasOwnProperty() - Determines whether an own property with the given name exists
+* propertyIsEnumerable() - Determines whether an own property is enumerable
+* isPrototypeOf() - Determines whether the object is the prototype of another
+* valueOf() - Returns the value representation of the object
+* toString() - Returns a string representation of the object
+
 
 ### `this` keyword
 
@@ -596,7 +649,7 @@ is therefore almost equivalent to
 var bill = new Person("William", "Orange");
 ```
 
-- `apply()` has a sister function named `call`, which again lets you set this but takes an expanded argument list as opposed to an array.
+- `apply()` has a similar function named `call`, which lets you set `this` but takes an expanded argument list as opposed to an array.
 
 ```js
 function lastNameCaps() {
@@ -608,6 +661,24 @@ lastNameCaps.call(s);
 s.lastNameCaps = lastNameCaps;
 s.lastNameCaps();
 ```
+
+### `call` vs `apply` vs `bind`
+
+Use `.bind()` when you want a function to later be called with a certain context, useful in events. Use `.call()` or `.apply()` when you want to invoke the function immediately, and modify the context.
+
+`Call`/`apply` call the function immediately, whereas `bind` returns a function that when later executed will have the correct context set for calling the original function. This way you can maintain context in async callbacks, and events.
+
+A simple implementation of `bind` would be:
+
+```js
+Function.prototype.bind = function (scope) {
+    var fn = this;
+    return function () {
+        return fn.apply(scope);
+    };
+}
+```
+
 
 ### Inner functions
 

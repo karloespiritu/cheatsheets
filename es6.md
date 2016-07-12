@@ -1,7 +1,7 @@
 ---
 layout: page
-title:  ES2015
-permalink: /es2015/
+title:  ES6
+permalink: /es6/
 ---
 
 ## ES6 New Features:
