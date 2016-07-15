@@ -95,12 +95,12 @@ Selectors define to which elements a set of CSS rules apply.
   <tr>
     <td><i>element</i> <i>element</i></td>
     <td>div p</td>
-    <td>Descendant selector. Selects all &lt;p&gt; elements inside &lt;div&gt; elements</td>
+    <td>Descendant selector. Selects all &lt;p&gt; elements inside &lt;div&gt; elements. </td>
   </tr>
   <tr>
     <td><i>element</i>&gt;<i>element</i></td>
     <td>div &gt; p</td>
-    <td>Child selector. Selects all &lt;p&gt; elements where the parent is a &lt;div&gt; element</td>
+    <td>Child selector. Selects all &lt;p&gt; elements where the parent is a &lt;div&gt; element. The difference between the standard X Y and X &gt; Y is that the latter will only select direct children.</td>
   </tr>
   <tr>
     <td><i>element</i>+<i>element</i></td>
