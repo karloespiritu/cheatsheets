@@ -49,6 +49,12 @@ git checkout master
 git merge upstream/master
 ```
 
+View Change Log
+
+```bash
+git log --oneline --decorate --color
+```
+
 ## Refactor filenames
 
 ```bash
@@ -64,6 +70,12 @@ git mv <filename-orig> <filename-renamed>
 ```
 
 ## Commits
+
+Show differences between current commit and working tree
+
+```bash
+git diff HEAD <file>
+```
 
 Unstage a file for commit
 
