@@ -71,10 +71,16 @@ git mv <filename-orig> <filename-renamed>
 
 ## Commits
 
-Show differences between current commit and working tree
+If you want to see what you haven't `git add`ed yet:
 
 ```bash
-git diff HEAD <file>
+git diff -- myfile.txt
+```
+
+If you want to see already-added changes
+
+```bash
+git diff --cached -- myfile.txt
 ```
 
 Unstage a file for commit
