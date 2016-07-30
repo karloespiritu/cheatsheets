@@ -1,10 +1,13 @@
+# Plugins
+gems:             [jekyll-paginate, jekyll-gist]
+
+
 # Dependencies
 markdown:         redcarpet
 highlighter:      pygments
 
 # Permalinks
 permalink:        pretty
-relative_permalinks: true
 
 # Setup
 title:            Cheatsheets
@@ -20,7 +23,7 @@ author:
 paginate:         5
 
 # Custom vars
-version:          1.0.0
+version:          1.0.1
 
 github:
   repo:           https://github.com/karloespiritu/cheatsheets
