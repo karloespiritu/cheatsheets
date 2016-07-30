@@ -133,6 +133,7 @@ DEPENDENCIES
   github-pages
   jekyll
   jekyll-gist
+  jekyll-github-metadata
   jekyll-paginate
   pygments.rb
   redcarpet
