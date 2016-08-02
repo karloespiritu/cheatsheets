@@ -10,6 +10,9 @@ A list of useful commands for administering Linux/UNIX servers
 ## System Information
 
 ```bash
+# Check system version
+$ lsb_release -a  // Ubuntu
+
 # Check disk usage
 $ df -h
 
