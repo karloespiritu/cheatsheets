@@ -4,6 +4,8 @@ title: NPM (Node Package Manager)
 permalink: /npm/
 ---
 
+## Top NPM commands
+
 * `npm init` - displays a simple wizard to help you create and define your new project
 * `npm install module_name`: install a module;
 * `npm install -g module_name`: install a global module;
