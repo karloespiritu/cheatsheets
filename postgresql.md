@@ -7,7 +7,6 @@ permalink: /postgresql/
 ## Basic Commands
 
 ### Login to postgresql
-
 ```bash
 psql -d mydb -U myuser -W
 psql -h myhost -d mydb -U myuser -W
@@ -15,50 +14,46 @@ psql -U myuser -h myhost "dbname=mydb sslmode=require" # ssl connection
 ```
 
 ### Default Admin Login
+```bash
 sudo -u postgres psql -U postgres
 sudo -u postgres psql
+```
 
 ### List databases on postgresql server
-
 ```
 psql -l [-U myuser] [-W]
 ```
 
 ### Turn off line pager pagination in psql:
+```
 \pset pager
-
+```
 
 ### Determine system tables
-
 ```
 select * from pg_tables where tableowner = 'postgres';
 ```
 
 ### List databases from within a pg shell
-
 ```
 \l
 ```
 
 ### List databases from UNIX command prompt
-
 ```
 psql -U postgres -l
 ```
 
 ### Describe a table
-
 ```
 \d tablename
 ```
 ### Quit psql
-
 ```
 \q
 ```
 
 ### Switch postgres database within admin login shell
-
 ```
 \connect databasename
 ```
@@ -90,8 +85,7 @@ psql -W -U username -H hostname < file.sql
 ```
 
 ### Dump (Backup) Data into file
-
-```
+```bash
 pg_dump -W -U username -h hostname database_name > file.sql
 ```
 
