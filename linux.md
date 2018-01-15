@@ -188,6 +188,9 @@ $ users
 
 # Show listing of last logged in users.
 $ last -n 4
+
+# Add user to sudo group with sudo privileges
+$ usermod -aG sudo <username>
 ```
 
 ## SSH
