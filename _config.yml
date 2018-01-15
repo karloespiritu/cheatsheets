@@ -24,7 +24,6 @@ plugins:
 
 # Custom vars
 version:            2.0.0
-sidebar_home_link:  true
 
 github:
   repo:             https://github.com/karloespiritu/cheatsheets
