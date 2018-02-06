@@ -4,7 +4,7 @@ title: Python
 permalink: /python/
 ---
 
-##Strings
+## Strings
 
 ### Format String
 
@@ -202,7 +202,7 @@ except IndexError as e:
 except (TypeError, NameError):
     # Multiple exceptions can be handled together, if required.
     pass
-else:   
+else:
     # Optional clause to the try/except block. Must follow all except blocks
     # Runs only if the code in try raises no exceptions
     print "All good!"
