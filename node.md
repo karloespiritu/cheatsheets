@@ -57,7 +57,7 @@ Buffer;      // The Buffer class is a global type for dealing with binary data d
 {% endhighlight %}
 
 ## Console
-[Official Docs](http://nodejs.org/api/console.html)]
+[Official Docs](http://nodejs.org/api/console.html)
 
 ```js
 console.log([data], [...])             // Prints to stdout with newline.
@@ -73,7 +73,7 @@ console.assert(expression, [message])  // Same as assert.ok() where if the expre
 ```
 
 ## Timers
-[Official Docs](http://nodejs.org/api/timers.html)]
+[Official Docs](http://nodejs.org/api/timers.html)
 
 ```js
 setTimeout(callback, delay, [arg], [...])   // To schedule execution of a one-time callback after delay milliseconds. Optionally you can also pass arguments to the callback.
