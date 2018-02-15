@@ -6,7 +6,7 @@ highlighter:      rouge
 title:            Cheatsheets
 tagline:          Code cheatsheets collection
 description:      "\"The only difference between science and screwing around is writing it down\""
-url:              http://karloespiritu.com/cheatsheets
+url:              https://karloespiritu.com/cheatsheets
 baseurl:          "/cheatsheets/"
 
 author:
@@ -23,7 +23,7 @@ plugins:
   - jekyll-paginate
 
 # Custom vars
-version:            2.0.0
+version:            2.0.1
 
 github:
   repo:             https://github.com/karloespiritu/cheatsheets
