@@ -34,7 +34,7 @@ permalink: /flexbox/
 
 ```css
 .flex-container {
-   flex-direction: column; //row if horizontal layout
+   flex-direction: column; /* row if horizontal layout */
    justify-content: flex-start;
 }
 ```
@@ -45,7 +45,7 @@ permalink: /flexbox/
 .flex-container {
    display: flex;
    flex-direction: row;
-   justify-content: flex-start; //align-items: flex-start; if column
+   justify-content: flex-start; /* align-items: flex-start; if column */
 }
 ```
 
@@ -55,7 +55,7 @@ permalink: /flexbox/
 .flex-container {
    display: flex;
    flex-direction: row;
-   justify-content: flex-end; //align-items: flex-end; if column
+   justify-content: flex-end; /* align-items: flex-end; if column */
 }
 ```
 
@@ -64,7 +64,7 @@ permalink: /flexbox/
 ```css
 .flexcontainer {
    display: flex;
-   flex-direction: row; //works wth column as well
+   flex-direction: row; /* works wth 'column' as well */
    align-items: center;
    justify-content: center;
 }
