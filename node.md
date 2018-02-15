@@ -47,14 +47,14 @@ $ npm uninstall -g <package> # To uninstall a global package
 
 ## Global Objects
 
-{% highlight js %}
+```js
 __filename;  // The filename of the code being executed. (absolute path)
 __dirname;   // The name of the directory that the currently executing script resides in. (absolute path)
 module;      // A reference to the current module. In particular module.exports is used for defining what a module exports and makes available through require().
 exports;     // A reference to the module.exports that is shorter to type.
 process;     // The process object is a global object and can be accessed from anywhere. It is an instance of EventEmitter.
 Buffer;      // The Buffer class is a global type for dealing with binary data directly.
-{% endhighlight %}
+```
 
 ## Console
 [Official Docs](http://nodejs.org/api/console.html)
@@ -570,7 +570,7 @@ buffer.INSPECT_MAX_BYTES;                                           // How many 
 
 ## Code Snippets
 
-Useful code snippets
+Some common code snippets
 
 ### Get Directory Name of Current Module
 
