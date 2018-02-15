@@ -567,3 +567,75 @@ buf.length;                                                         // The size 
 
 buffer.INSPECT_MAX_BYTES;                                           // How many bytes will be returned when buffer.inspect() is called. This can be overridden by user modules.
 ```
+
+## Code Snippets
+
+Useful code snippets
+
+### Get Directory Name of Current Module
+
+```js
+console.log(__dirname)
+```
+
+### Run a HTTP server
+
+```js
+const http = require('http')
+const PORT = 3000
+
+const server = http.createServer(function (req, res) {
+  if (req.url === '/test') {
+    return res.end('SUCCESS')
+  }
+  res.statusCode = 400
+  res.end()
+})
+
+server.listen(PORT, (err) => console.log(err ? `Error: ${err.message}` : `Server running on ${PORT}`))
+```
+
+### Check if file can be read or written by current process
+
+```js
+const fs = require('fs')
+
+fs.access('/path/to/file', fs.constants.R_OK | fs.constants.W_OK, (err) => {
+  if (err) {
+    console.log('No Access')
+  } else {
+    console.log('Can Read/Write')
+  }
+})
+```
+
+### Delete a file
+
+```js
+const fs = require('fs')
+
+fs.unlink('filename.txt', (err) => {
+  if (err) throw err
+  console.log('File deleted')
+})
+```
+
+### Read a JSON File as Object
+
+```js
+// require() automatically converts any file that ends in ".json" into an Object
+const json = require('/path/to/data.json')
+```
+
+### Express server
+
+```js
+const express = require('express')
+const app = express()
+const port = process.env.port || 3000
+
+app.listen(port, function() {
+  console.log(`Listining on port: ${port}`)
+})
+```
+
