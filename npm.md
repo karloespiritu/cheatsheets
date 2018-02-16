@@ -1,6 +1,6 @@
 ---
 layout: page
-title: NPM (Node Package Manager)
+title: NPM
 permalink: /npm/
 ---
 
