@@ -105,7 +105,7 @@ const reducer = combineReducers({
 
 References:
 
-[Combine Reducers](https://redux.js.org/docs/api/combineReducers.html)
-[Official Docs])(https://redux.js.org)
+- [Combine Reducers](https://redux.js.org/docs/api/combineReducers.html)
+- [Redux Official Docs](https://redux.js.org)
 
 
