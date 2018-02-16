@@ -3,8 +3,9 @@ layout: page
 title: Redux
 permalink: /redux/
 ---
+Redux is a predictable state container for JavaScript apps.
 
-Create a store
+### Create a store
 
 ```js
 import { createStore } from 'redux'
@@ -27,7 +28,7 @@ let store = createStore(counter, { value: 0 })
 
 ```
 
-Use a store
+### Use a store
 
 ```js
 let store = createStore(counter)
@@ -45,7 +46,7 @@ store.subscribe(() => { ... })
 
 ## React Redux
 
-Provider
+### Provider
 
 ```js
 import { Provider } from 'react-redux'
@@ -61,7 +62,7 @@ React.render(
 
 ```
 
-Mapping State
+### Mapping State
 
 ```js
 import { connect } from 'react-redux'
