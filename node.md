@@ -639,3 +639,45 @@ app.listen(port, function() {
 })
 ```
 
+## Security Best Practices (Express.js)
+
+### Use TLS
+
+ [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) encrypts data before it is sent from the client to the server, thus preventing some common (and easy) hacks. Although Ajax and POST requests might not be visibly obvious and seem “hidden” in browsers, their network traffic is vulnerable to [packet sniffing](https://en.wikipedia.org/wiki/Packet_analyzer) and [man-in-the-middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attacks.
+
+
+### Use Helmet
+
+[Helmet](https://www.npmjs.com/package/helmet) can help protect your app from some well-known web vulnerabilities by setting HTTP headers appropriately.
+
+Helmet is actually just a collection of nine smaller middleware functions that set security-related HTTP headers:
+
+- [csp](https://github.com/helmetjs/csp) sets the `Content-Security-Policy` header to help prevent cross-site scripting attacks and other cross-site injections.
+- [hidePoweredBy](https://github.com/helmetjs/hide-powered-by) removes the X-Powered-By header.
+- [hpkp](https://github.com/helmetjs/hpkp) Adds Public Key Pinning headers to prevent man-in-the-middle attacks with forged certificates.
+- [hsts](https://github.com/helmetjs/hsts) sets `Strict-Transport-Security` header that enforces secure (HTTP over SSL/TLS) connections to the server.
+- [ieNoOpen](https://github.com/helmetjs/ienoopen) sets `X-Download-Options` for IE8+.
+- [noCache](https://github.com/helmetjs/nocache) sets `Cache-Control` and Pragma headers to disable client-side caching.
+- [noSniff](https://github.com/helmetjs/dont-sniff-mimetype) sets X-Content-Type-Options to prevent browsers from MIME-sniffing a response away from the declared content-type.
+- [frameguard](https://github.com/helmetjs/frameguard) sets the X-Frame-Options header to provide clickjacking protection.
+- [xssFilter](https://github.com/helmetjs/x-xss-protection) sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers.
+
+### Use cookies securely
+
+To ensure cookies don’t open your app to exploits, don’t use the default session cookie name and set cookie security options appropriately.
+
+### Ensure your dependencies are secure
+
+Using npm to manage your application’s dependencies is powerful and convenient. But the packages that you use may contain critical security vulnerabilities that could also affect your application. The security of your app is only as strong as the “weakest link” in your dependencies.
+
+Use either or both of the following two tools to help ensure the security of third-party packages that you use: [nsp](https://www.npmjs.com/package/nsp) and [Snyk](https://snyk.io/).
+
+### Avoid other known vulnerabilities
+
+Keep an eye out for [Node Security Project](https://nodesecurity.io/advisories) or [Snyk](https://snyk.io/vuln/) advisories that may affect Express or other modules that your app uses. In general, these databases are excellent resources for knowledge and tools about Node security.
+
+Finally, Express apps - like any other web apps - can be vulnerable to a variety of web-based attacks. Familiarize yourself with known [web vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-Top_10) and take precautions to avoid them.
+
+### Additional considerations
+
+Here are some further recommendations from the [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist).
