@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Node
+title: Node.js
 permalink: /node/
 ---
 
