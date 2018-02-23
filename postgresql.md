@@ -192,13 +192,13 @@ pg_restore --verbose --clean --no-acl --no-owner -h localhost -U myuser -d mydb 
 Source: [http://stackoverflow.com/questions/5408156/how-to-drop-a-postgresql-database-if-there-are-active-connections-to-it](http://stackoverflow.com/questions/5408156/how-to-drop-a-postgresql-database-if-there-are-active-connections-to-it)
 
 ```sql
-# Postgres 9.2 and above
+# Postgres 9.6 and above
 SELECT pg_terminate_backend(pg_stat_activity.pid)
 FROM pg_stat_activity
 WHERE pg_stat_activity.datname = 'TARGET_DB'
  AND pid <> pg_backend_pid();
 
-# Postgres 9.1 and below
+# Postgres 9.6 and below
 SELECT pg_terminate_backend(pg_stat_activity.procpid)
 FROM pg_stat_activity
 WHERE pg_stat_activity.datname = 'TARGET_DB'
@@ -270,6 +270,124 @@ EXPLAIN ANALYZE __query__
 ANALYZE [__table__]
 ```
 
+## Querying Data
+
+### From a Single Table
+
+```sql
+-- Query data in columns c1, c2 from a table
+SELECT c1, c2 FROM t;
+
+-- Query distinct rows from a table
+SELECT DISTINCT c1
+FROM t
+WHERE condition;
+
+-- Sort the result set in ascending or descending order
+SELECT c1, c2
+FROM t
+ORDER BY c1 ASC [DESC];
+
+-- Skip offset of rows and return the next n rows
+SELECT c1, c2
+FROM t
+ORDER BY c1
+LIMIT n
+OFFSET offset;
+
+-- Group rows using an aggregate function
+SELECT c1, aggregate(c2)
+FROM t
+GROUP BY c1;
+
+-- Filter groups using HAVING clause
+SELECT c1, aggregate(c2) FROM t
+GROUP BY c1
+HAVING condition;
+```
+
+### From Multiple Tables
+
+```sql
+-- Inner join t1 and t2
+SELECT c1, c2
+FROM t1
+INNER JOIN t2
+ON condition;
+
+-- Left join t1 and t1
+SELECT c1, c2
+FROM t1
+LEFT JOIN t2
+ON condition;
+
+-- Right join t1 and t2
+SELECT c1, c2
+FROM t1
+RIGHT JOIN t2
+ON condition;
+
+-- Perform full outer join
+SELECT c1, c2
+FROM t1
+FULL OUTER JOIN t2
+ON condition;
+
+-- Produce a Cartesian product of rows in tables
+SELECT c1, c2
+FROM t1
+CROSS JOIN t2;
+
+-- Another way to perform cross join
+SELECT c1, c2
+FROM t1, t2;
+
+-- Join t1 to itself using INNER JOIN clause
+SELECT c1, c2
+FROM t1 A
+INNER JOIN t2 B ON condition
+```
+
+### Using SQL Operators
+
+```sql
+-- Combine rows from two queries
+SELECT c1, c2 FROM t1
+UNION [ALL]
+SELECT c1, c2 FROM t2;
+
+-- Return the intersection of two queries
+SELECT c1, c2 FROM t1
+INTERSECT
+SELECT c1, c2 FROM t2;
+
+-- Subtract a result set from another result set
+SELECT c1, c2 FROM t1
+EXCEPT
+SELECT c1, c2 FROM t2;
+
+-- Query rows using pattern matching %, _
+SELECT c1, c2 FROM t1
+WHERE c1 [NOT] LIKE pattern;
+
+-- Query rows in a list
+SELECT c1, c2
+FROM t
+WHERE c1
+[NOT] IN value_list;
+
+-- Query rows between two values
+SELECT c1, c2
+FROM t
+WHERE c1
+BETWEEN low AND high;
+
+-- Check if values in a table is NULL or not
+SELECT c1, c2 FROM t
+WHERE c1 IS [NOT] NULL;
+```
+
 ## Source:
-[PostgreSQL 9.6.0 Documentation](https://www.postgresql.org/docs/9.6/static/app-psql.html)
-[PostgreSQL Exercises](https://pgexercises.com)
+- [PostgreSQL 9.6.0 Documentation](https://www.postgresql.org/docs/9.6/static/app-psql.html)
+- [PostgreSQL Exercises](https://pgexercises.com)
+- [PostgreSQL Tutorial](http://www.postgresqltutorial.com/postgresql-cheat-sheets)
