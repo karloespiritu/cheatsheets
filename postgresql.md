@@ -8,6 +8,7 @@ permalink: /postgresql/
 
 ### Login to postgresql
 ```bash
+psql -U postgres
 psql -d mydb -U myuser -W
 psql -h myhost -d mydb -U myuser -W
 psql -U myuser -h myhost "dbname=mydb sslmode=require" # ssl connection
@@ -204,5 +205,71 @@ WHERE pg_stat_activity.datname = 'TARGET_DB'
 AND procpid <> pg_backend_pid();
 ```
 
+## Handy Queries
+
+```sql
+-- List procedure/function
+SELECT * FROM pg_proc WHERE proname='__procedurename__';
+
+-- List view (including the definition)
+SELECT * FROM pg_views WHERE viewname='__viewname__';
+
+-- Show DB table space in use
+SELECT pg_size_pretty(pg_total_relation_size('__table_name__'));:
+
+-- Show DB space in use
+SELECT pg_size_pretty(pg_database_size('__database_name__'));
+
+-- Show current user's statement timeout
+show statement_timeout;
+
+-- Show table indexes
+SELECT * FROM pg_indexes WHERE tablename='__table_name__' AND schemaname='__schema_name__';
+
+-- Get all indexes from all tables of a schema:
+SELECT
+   t.relname AS table_name,
+   i.relname AS index_name,
+   a.attname AS column_name
+FROM
+   pg_class t,
+   pg_class i,
+   pg_index ix,
+   pg_attribute a,
+   pg_namespace n
+WHERE
+   t.oid = ix.indrelid
+   AND i.oid = ix.indexrelid
+   AND a.attrelid = t.oid
+   AND a.attnum = ANY(ix.indkey)
+   AND t.relnamespace = n.oid
+   AND n.nspname = 'kartones'
+ORDER BY
+   t.relname,
+   i.relname
+
+-- Queries being executed at a certain DB
+SELECT datname, application_name, pid, backend_start, query_start, state_change, state, query
+  FROM pg_stat_activity
+  WHERE datname='__database_name__';
+
+-- Get all queries from all dbs waiting for data (might be hung)
+SELECT * FROM pg_stat_activity WHERE waiting='t';
+```
+
+### Query analysis
+
+```
+-- See the query plan for the given query
+EXPLAIN __query__
+
+-- See and execute the query plan for the given query
+EXPLAIN ANALYZE __query__
+
+-- Collect statistics
+ANALYZE [__table__]
+```
+
 ## Source:
 [PostgreSQL 9.6.0 Documentation](https://www.postgresql.org/docs/9.6/static/app-psql.html)
+[PostgreSQL Exercises](https://pgexercises.com)
