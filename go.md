@@ -67,7 +67,7 @@ func main() {
 go run hello.go
 ```
 
-##Functions
+## Functions
 
 ```go
 // a simple function
@@ -100,7 +100,7 @@ func returnMulti2() (n int, s string) {
 var x, str = returnMulti2()
 ```
 
-##Functions As Values and Closures
+## Functions As Values and Closures
 
 ```go
 func main() {
@@ -139,7 +139,7 @@ func outer() (func() int, int) {
 }
 ```
 
-##Snippets
+## Snippets
 
 ### HTTP Server
 
