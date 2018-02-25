@@ -75,6 +75,40 @@ func main() {
 go run hello.go
 ```
 
+## Variables
+
+```go
+...
+func main() {
+    var age int
+    age = 70
+    fmt.Printf("Quantity is %d\n", quantity)
+}
+
+// You can merge the var dedclaration and assignment to one
+var age int = 70
+
+// Or you can use shorthand variable declaration operator, :=, which
+// can infer type
+age := 70
+```
+
+### Multiple assignments
+
+Go lets you assign multiple variables using either `=` or `:=`
+
+```go
+func main() {
+    // As long as one of the variables is new, `:=` can be used.
+    // However, you can’t change the type of age. It was declared (implicitly)
+    // as an integer and thus, can only be assigned integers.
+    name, age := "Lemmy", 70
+    fmt.Printf("%s's age is %d\n", name, age)
+}
+```
+
+> Note: Go won’t let you have unused variables.
+
 ## Functions
 
 ```go
@@ -86,6 +120,9 @@ func functionName(param1 string, param2 int) {}
 
 // multiple parameters of the same type
 func functionName(param1, param2 int) {}
+
+// function with multiple return values
+func functionName(param1 int) (int, bool) {}
 
 // return type declaration
 func functionName() int {
@@ -99,13 +136,25 @@ func returnMulti() (int, string) {
 var x, str = returnMulti()
 
 // Return multiple named results simply by return
-func returnMulti2() (n int, s string) {
+func returnMulti2() (n int, b bool) {
     n = 42
-    s = "foobar"
+    b = true
     // n and s will be returned
     return
 }
-var x, str = returnMulti2()
+x, val := returnMulti2()
+
+// Sometimes, you only care about one of the return values.
+// In these cases, you assign the other values to `_`
+
+// This is more than a convention. _, the blank identifier, is special
+// in that the return value isn’t actually assigned. This lets you
+// use _ over and over again regardless of the returned type.
+
+_, val := returnMulti2()
+if val == false {
+  // handle this error case
+}
 ```
 
 ## Functions As Values and Closures
