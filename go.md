@@ -48,6 +48,14 @@ permalink: /go/
     go get golang.org/x/tools/cmd/vet
     ```
 
+## Offline Documentation
+
+Run Go documentation locally
+
+```bash
+godoc -http=:6060
+```
+
 ## Basic Syntax
 
 File `hello.go`:
