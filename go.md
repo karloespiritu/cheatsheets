@@ -196,6 +196,18 @@ func outer() (func() int, int) {
 }
 ```
 
+## Structures
+
+ - Go is not an OO language like Java, C++, or Ruby. It doesn’t have objects nor inheritance and doesn’t have the many concepts associated with OO such as polymorphism and overloading
+ - Go have structures, which can be associated with methods. Go also supports a simple but effective form of composition
+
+```go
+type Song struct {
+    Title string
+    Year int
+}
+```
+
 ## Snippets
 
 ### HTTP Server
