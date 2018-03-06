@@ -35,7 +35,7 @@ var myBool : Bool         // true or false
 `...` - closed range operator
 
 ```swift
-//Examples
+// Examples
 0...100   35...66   0...someVar
 ```
 
@@ -62,6 +62,7 @@ println("The amount is \(Double(quantity) * price)")
 ```
 
 ## Conditionals
+
 * Parentheses are not required around the condition.
 * Curly braces are required around each code block.
 
@@ -72,7 +73,8 @@ if myVar < 666 {
   // do something else
 }
 ```
-* Conditions must be true or false:
+
+### Conditions must be true or false:
 
 ```swift
 var x = 0 // typed as Int
@@ -81,7 +83,7 @@ if x {    //will not compile, as it is not a boolean.
 }
 ```
 
-* Multiple conditions
+### Multiple conditions
 
 ```swift
 // logical AND: &&
@@ -138,9 +140,9 @@ do {
 ```
 
 ## Functions
+By default, function parameters are treated as constants, not variables
 
 ```swift
-By default, function parameters are treated as constants, not variables
 
 // simple function
 func myFunction() {
@@ -711,7 +713,7 @@ message.reverseWords()
 
 ### Generics
 
-* A feature in Swift language that lets you get benefits of strong type safety and flexibility all the same time
+* A feature in Swift language that lets you get benefits of strong type safety and flexibility all at the same time
 
 ```swift
 import UIKit
