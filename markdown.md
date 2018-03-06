@@ -16,7 +16,7 @@ permalink: /markdown/
 
 ```
 
-##Emphasis
+## Emphasis
 
 ```bash
 *This is italic*
@@ -24,14 +24,14 @@ permalink: /markdown/
 ~~Strike through this text.~~
 ```
 
-##Images
+## Images
 
 ```bash
 ![My Logo](/images/logo.png "Title")
 Format: ![Alt Text](url)
 ```
 
-##URLs
+## URLs
 
 ```bash
 [Apple](http://apple.com)
@@ -42,7 +42,7 @@ will render as:
 
 [Apple](http://apple.com)
 
-##Inline Code
+## Inline Code
 
 ```bash
 This is a sample `inline code`
