@@ -722,8 +722,8 @@ class SimpleClass {
     var singleProperty : String = "A string"
 }
 
-let myNumbers = [666,113,34,45,12,456, 234]
-let myStrings = ["death","hell","grave"]
+let myNumbers = [666, 113, 34, 45, 12, 456, 234]
+let myStrings = ["death", "hell", "grave"]
 let myObjects = [SimpleClass(), SimpleClass(), SimpleClass(), SimpleClass()]
 
 func displayArray<T>(theArray : [T]) -> T{
