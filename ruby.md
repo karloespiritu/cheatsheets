@@ -168,7 +168,7 @@ i = 1
 # Loop until break
 loop do
   i += 1
-  next unless (x % 3) == 0
+  next unless (i % 3) == 0
   puts i  
   break if i >= 15
 end
@@ -202,7 +202,7 @@ end
 
 # for loop
 integers = [10, 11, 12, 13, 14, 15]
-for integer in integers
+for number in integers
   puts "#{number}"
 end
 
@@ -362,7 +362,7 @@ puts song1.title       # => "Hand of Doom"
 puts song1.title = "Butchered at Birth" # => "Butchered at Birth"
 puts song1.title       #=> "Butchered at Birth"
 puts song2.genre       # => "Metal"
-puts song2.title       # => "The Bleeding"
+puts song2.title       # => "Raining Blood"
 
 # Call the class method
 Song.display('Test message from class') #=> "Test message from class"
